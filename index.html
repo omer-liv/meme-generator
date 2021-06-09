@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,10 +8,50 @@
     <title>MEME Generator</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-    <h1>MEME GENERATOR</h1>
-    
 
+<body onload="init()">
+    <h1>MEME GENERATOR</h1>
+    <header class="main-nav flex-row">
+        <div class="logo">MeMe</div>
+        <div class="nav-bar">
+            <a href="">Gallery</a>
+            <a href="">Memes</a>
+            <a href="">About</a>
+        </div>
+    </header>
+    <div class="img-container">
+        <img src="img\1.jpg" id="1" onclick="renderImage(this.id)">
+        <img src="img\2.jpg" id="2" onclick="renderImage(this.id)">
+        <img src="img\3.jpg" id="3" onclick="renderImage(this.id)">
+        <img src="img\4.jpg" id="4" onclick="renderImage(this.id)">
+        <img src="img\5.jpg" id="5" onclick="renderImage(this.id)">
+        <img src="img\6.jpg" id="6" onclick="renderImage(this.id)">
+        <img src="img\7.jpg" id="7" onclick="renderImage(this.id)">
+        <img src="img\8.jpg" id="8" onclick="renderImage(this.id)">
+        <img src="img\9.jpg" id="9" onclick="renderImage(this.id)">
+        <img src="img\10.jpg" id="10" onclick="renderImage(this.id)">
+        <img src="img\11.jpg" id="11" onclick="renderImage(this.id)">
+        <img src="img\12.jpg" id="12" onclick="renderImage(this.id)">
+        <img src="img\13.jpg" id="13" onclick="renderImage(this.id)">
+        <img src="img\14.jpg" id="14" onclick="renderImage(this.id)">
+        <img src="img\15.jpg" id="15" onclick="renderImage(this.id)">
+        <img src="img\16.jpg" id="16" onclick="renderImage(this.id)">
+        <img src="img\17.jpg" id="17" onclick="renderImage(this.id)">
+        <img src="img\18.jpg" id="18" onclick="renderImage(this.id)">
+    </div>
+    <main class="main-container flex-row">
+        <canvas id="my-canvas"></canvas>
+        <div class="edit-zone">
+            <input class="text" type="text" oninput="renderText(value)">
+        </div>
+    </main>
+    <footer>
+        <h3>meme-genrator</h3>
+        <p>copyrights O.Liv 2021</p>
+    </footer>
+
+    <script src="js/meme-sevice.js"></script>
     <script src="js/main.js"></script>
 </body>
+
 </html>
