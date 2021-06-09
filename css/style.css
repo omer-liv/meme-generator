@@ -22,7 +22,7 @@ body {
     background-color: rgba(90, 20, 20, 0.534);
 }
 
-img {
+.img-container img {
     height: 100px;
     border: 1px solid black;
 }
@@ -41,6 +41,10 @@ canvas {
     font-size: 4rem;
     height: 500px;
     width: 500px;
+}
+
+.edit-zone img {
+    height: 20px;
 }
 
 /* Helpers */

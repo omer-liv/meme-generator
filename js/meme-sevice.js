@@ -23,32 +23,61 @@ var gImgs = [
 ];
 var gMeme = {
     selectedImgId: 1,
-    selectedLineIdx: 0,
     lines: [
         {
             txt: '',
             size: 30,
             align: 'center',
-            color: 'black'
+            color: 'black',
+            pos: {
+                x: 0,
+                y: 0
+            }
+        },
+        {
+            txt: '',
+            size: 30,
+            align: 'center',
+            color: 'black',
+            pos: {
+                x: 0,
+                y: 0
+            }
         }
     ]
 }
 
-function  updateGmeme(id) {
+function linesPosition(elCanvas) {
+    gMeme.lines.forEach((line) => {
+        line.pos.x = elCanvas.width / 2;
+    })
+    gMeme.lines[0].pos.y = elCanvas.height - elCanvas.height + 30;
+    gMeme.lines[1].pos.y = gElCanvas.height - 30;
+}
+
+function txtSizeUp(line) {
+    gMeme.lines[line].size++
+}
+
+function txtSizeDown(line) {
+    gMeme.lines[line].size--
+}
+
+function updateGmeme(id) {
     gMeme.selectedImgId = parseInt(id);
 }
 
-function setText(txt) {
-    gMeme.lines[0].txt = txt;
+function setText(txt, line) {
+    gMeme.lines[line].txt = txt;
 }
 
 function getImage(strId) {
-   var id = parseInt(strId);
+    var id = parseInt(strId);
     return gImgs.find((img) => {
         return img.id === id
     })
 }
 
-function getMemeText() {
-    return gMeme.lines[0].txt;
+function getMemeText(line) {
+    return gMeme.lines[line].txt;
 }

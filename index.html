@@ -20,29 +20,34 @@
         </div>
     </header>
     <div class="img-container">
-        <img src="img\1.jpg" id="1" onclick="renderImage(this.id)">
-        <img src="img\2.jpg" id="2" onclick="renderImage(this.id)">
-        <img src="img\3.jpg" id="3" onclick="renderImage(this.id)">
-        <img src="img\4.jpg" id="4" onclick="renderImage(this.id)">
-        <img src="img\5.jpg" id="5" onclick="renderImage(this.id)">
-        <img src="img\6.jpg" id="6" onclick="renderImage(this.id)">
-        <img src="img\7.jpg" id="7" onclick="renderImage(this.id)">
-        <img src="img\8.jpg" id="8" onclick="renderImage(this.id)">
-        <img src="img\9.jpg" id="9" onclick="renderImage(this.id)">
-        <img src="img\10.jpg" id="10" onclick="renderImage(this.id)">
-        <img src="img\11.jpg" id="11" onclick="renderImage(this.id)">
-        <img src="img\12.jpg" id="12" onclick="renderImage(this.id)">
-        <img src="img\13.jpg" id="13" onclick="renderImage(this.id)">
-        <img src="img\14.jpg" id="14" onclick="renderImage(this.id)">
-        <img src="img\15.jpg" id="15" onclick="renderImage(this.id)">
-        <img src="img\16.jpg" id="16" onclick="renderImage(this.id)">
-        <img src="img\17.jpg" id="17" onclick="renderImage(this.id)">
-        <img src="img\18.jpg" id="18" onclick="renderImage(this.id)">
+        <img src="img/1.jpg" id="1" onclick="renderImage(this.id)">
+        <img src="img/2.jpg" id="2" onclick="renderImage(this.id)">
+        <img src="img/3.jpg" id="3" onclick="renderImage(this.id)">
+        <img src="img/4.jpg" id="4" onclick="renderImage(this.id)">
+        <img src="img/5.jpg" id="5" onclick="renderImage(this.id)">
+        <img src="img/6.jpg" id="6" onclick="renderImage(this.id)">
+        <img src="img/7.jpg" id="7" onclick="renderImage(this.id)">
+        <img src="img/8.jpg" id="8" onclick="renderImage(this.id)">
+        <img src="img/9.jpg" id="9" onclick="renderImage(this.id)">
+        <img src="img/10.jpg" id="10" onclick="renderImage(this.id)">
+        <img src="img/11.jpg" id="11" onclick="renderImage(this.id)">
+        <img src="img/12.jpg" id="12" onclick="renderImage(this.id)">
+        <img src="img/13.jpg" id="13" onclick="renderImage(this.id)">
+        <img src="img/14.jpg" id="14" onclick="renderImage(this.id)">
+        <img src="img/15.jpg" id="15" onclick="renderImage(this.id)">
+        <img src="img/16.jpg" id="16" onclick="renderImage(this.id)">
+        <img src="img/17.jpg" id="17" onclick="renderImage(this.id)">
+        <img src="img/18.jpg" id="18" onclick="renderImage(this.id)">
     </div>
     <main class="main-container flex-row">
         <canvas id="my-canvas"></canvas>
         <div class="edit-zone">
-            <input class="text" type="text" oninput="renderText(value)">
+            <input class="text" type="text" oninput="renderText(value)" placeholder="enter text here">
+            <button class="increase" onclick="increaseTxtSize()"><img src="icons/increase font - icon.png"></button>
+            <button class="decrease"  onclick="decreaseTxtSize()"><img src="icons/decrease font - icon.png"></button>
+            <button class="line-up" onclick="moveLineUp()"><img src="icons/arrow-up.png"></button>
+            <button class="line-down" onclick="moveLineDown()"><img src="icons/arrow-down.png"></button>
+            <button class="switch-line" onclick="switchLine()"><img src="icons/up-and-down-opposite-double-arrows-side-by-side.png"></button>
         </div>
     </main>
     <footer>
