@@ -10,9 +10,8 @@
 </head>
 
 <body onload="init()">
-    <h1>MEME GENERATOR</h1>
     <header class="main-nav flex-row">
-        <div class="logo">MeMe</div>
+        <div class="logo">MoMemes</div>
         <div class="nav-bar">
             <a href="">Gallery</a>
             <a href="">Memes</a>
@@ -43,19 +42,36 @@
         <canvas id="my-canvas"></canvas>
         <div class="edit-zone">
             <input class="text" type="text" oninput="renderText(value)" placeholder="enter text here">
-            <button class="increase" onclick="increaseTxtSize()"><img src="icons/increase font - icon.png"></button>
-            <button class="decrease"  onclick="decreaseTxtSize()"><img src="icons/decrease font - icon.png"></button>
-            <button class="line-up" onclick="moveLineUp()"><img src="icons/arrow-up.png"></button>
             <button class="line-down" onclick="moveLineDown()"><img src="icons/arrow-down.png"></button>
-            <button class="switch-line" onclick="switchLine()"><img src="icons/up-and-down-opposite-double-arrows-side-by-side.png"></button>
+            <button class="line-up" onclick="moveLineUp()"><img src="icons/arrow-up.png"></button>
+            <button class="switch-line" onclick="switchLine()"><img
+                    src="icons/up-and-down-opposite-double-arrows-side-by-side.png"></button>
+                    <button class="add-line" onclick="addLine()"><img src="/icons/add.png"></button>
+                    <button class="delete-line" onclick="deleteLine()"><img src="/icons/trash.png"></button>
+            <button class="increase" onclick="increaseTxtSize()"><img src="icons/increase font - icon.png"></button>
+            <button class="decrease" onclick="decreaseTxtSize()"><img src="icons/decrease font - icon.png"></button>
+            <button id="1" class="align-left" onclick="alignText(this.id)"><img src="icons/align-to-left.png" alt=""></button>
+            <button id="2" class="align-center" onclick="alignText(this.id)"><img src="icons/center-text-alignment.png" alt=""></button>
+            <button id="3" class="align-right" onclick="alignText(this.id)"><img src="icons/align-to-right.png" alt=""></button>
+            <select class="style" onchange="setFont(this.value)">
+                <option value="impact">Impact</option>
+                <option value="Monospace">Monospace</option>
+                <option value="times">Times</option>
+                <option value="verdana">Verdana</option>
+                <option value="marker">Marker</option>
+            </select>
+           <button class="color-btn stroke-color"><input class="color" type="color" oninput="setStrokeColor()"><img src="icons/text stroke.png"></button>
+            <button class="color-btn fill-color"><input class="color" type="color" oninput="setFillColor()"><img src="icons/paint-board-and-brush.png"></button>
+                <button class="share"><img src="icons/share.png"></button>
+                <button class="download"><a href="#" class="btn" onclick="downloadMeme(this)" download="my-meme.jpg"><img src="icons/download.png"></a></button>
         </div>
     </main>
     <footer>
-        <h3>meme-genrator</h3>
-        <p>copyrights O.Liv 2021</p>
+        <div class="logo">MoMemes</div>
+        <p>copyright MisterMeme 2021</p>
     </footer>
 
-    <script src="js/meme-sevice.js"></script>
+    <script src="js/meme-service.js"></script>
     <script src="js/main.js"></script>
 </body>
 
