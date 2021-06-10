@@ -39,10 +39,8 @@ var gMeme = {
     ]
 }
 
-function linesPosition(canvas) {
-    gMeme.lines.forEach((line) => {
-        line.pos.x = canvas.width / 2;
-    })
+function posFirstLine(canvas) {
+    gMeme.lines[0].pos.x = canvas.width / 2;
     gMeme.lines[0].pos.y = canvas.height - canvas.height + 30;
 }
 
@@ -92,6 +90,12 @@ function addNewLine(canvas) {
     }
 }
 
+function moveLines(canvas) {
+    gMeme.lines.forEach((line) => {
+        line.pos.x = canvas.width / 2;
+    })
+}
+
 function changeLineFont(font, line) {
     gMeme.lines[line].font = font;
 }
@@ -108,11 +112,11 @@ function removeLine(line) {
 }
 
 function changeStroke(line) {
-    gMeme.lines[line].stroke = document.querySelector('.stroke-color').value;
+    gMeme.lines[line].stroke = document.querySelector('.color-stroke').value;
 }
 
 function changeFill(line) {
-    gMeme.lines[line].fill = document.querySelector('.fill-color').value;
+    gMeme.lines[line].fill = document.querySelector('.color-fill').value;
 }
 
 function txtYUp(line) {

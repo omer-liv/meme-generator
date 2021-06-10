@@ -10,8 +10,10 @@
 </head>
 
 <body onload="init()">
+    <div class="all-screen" onclick="closeNavMenu()"></div>
     <header class="main-nav flex-row">
         <div class="logo">MoMemes</div>
+        <button class="nav-menu" onclick="openNavMenu()"><img src="icons/menu.png"></button>
         <div class="nav-bar">
             <a href="">Gallery</a>
             <a href="">Memes</a>
@@ -19,24 +21,24 @@
         </div>
     </header>
     <div class="img-container">
-        <img src="img/1.jpg" id="1" onclick="renderImage(this.id)">
-        <img src="img/2.jpg" id="2" onclick="renderImage(this.id)">
-        <img src="img/3.jpg" id="3" onclick="renderImage(this.id)">
-        <img src="img/4.jpg" id="4" onclick="renderImage(this.id)">
-        <img src="img/5.jpg" id="5" onclick="renderImage(this.id)">
-        <img src="img/6.jpg" id="6" onclick="renderImage(this.id)">
-        <img src="img/7.jpg" id="7" onclick="renderImage(this.id)">
-        <img src="img/8.jpg" id="8" onclick="renderImage(this.id)">
-        <img src="img/9.jpg" id="9" onclick="renderImage(this.id)">
-        <img src="img/10.jpg" id="10" onclick="renderImage(this.id)">
-        <img src="img/11.jpg" id="11" onclick="renderImage(this.id)">
-        <img src="img/12.jpg" id="12" onclick="renderImage(this.id)">
-        <img src="img/13.jpg" id="13" onclick="renderImage(this.id)">
-        <img src="img/14.jpg" id="14" onclick="renderImage(this.id)">
-        <img src="img/15.jpg" id="15" onclick="renderImage(this.id)">
-        <img src="img/16.jpg" id="16" onclick="renderImage(this.id)">
-        <img src="img/17.jpg" id="17" onclick="renderImage(this.id)">
-        <img src="img/18.jpg" id="18" onclick="renderImage(this.id)">
+        <img src="img/1.jpg" id="1" onclick="renderCanvas(this.id)">
+        <img src="img/2.jpg" id="2" onclick="renderCanvas(this.id)">
+        <img src="img/3.jpg" id="3" onclick="renderCanvas(this.id)">
+        <img src="img/4.jpg" id="4" onclick="renderCanvas(this.id)">
+        <img src="img/5.jpg" id="5" onclick="renderCanvas(this.id)">
+        <img src="img/6.jpg" id="6" onclick="renderCanvas(this.id)">
+        <img src="img/7.jpg" id="7" onclick="renderCanvas(this.id)">
+        <img src="img/8.jpg" id="8" onclick="renderCanvas(this.id)">
+        <img src="img/9.jpg" id="9" onclick="renderCanvas(this.id)">
+        <img src="img/10.jpg" id="10" onclick="renderCanvas(this.id)">
+        <img src="img/11.jpg" id="11" onclick="renderCanvas(this.id)">
+        <img src="img/12.jpg" id="12" onclick="renderCanvas(this.id)">
+        <img src="img/13.jpg" id="13" onclick="renderCanvas(this.id)">
+        <img src="img/14.jpg" id="14" onclick="renderCanvas(this.id)">
+        <img src="img/15.jpg" id="15" onclick="renderCanvas(this.id)">
+        <img src="img/16.jpg" id="16" onclick="renderCanvas(this.id)">
+        <img src="img/17.jpg" id="17" onclick="renderCanvas(this.id)">
+        <img src="img/18.jpg" id="18" onclick="renderCanvas(this.id)">
     </div>
     <main class="main-container flex-row">
         <canvas id="my-canvas"></canvas>
@@ -46,7 +48,7 @@
             <button class="line-up" onclick="moveLineUp()"><img src="icons/arrow-up.png"></button>
             <button class="switch-line" onclick="switchLine()"><img
                     src="icons/up-and-down-opposite-double-arrows-side-by-side.png"></button>
-                    <button class="add-line" onclick="addLine()"><img src="/icons/add.png"></button>
+                    <button class="add-line" onclick="addLine()"><img src="icons/add.png"></button>
                     <button class="delete-line" onclick="deleteLine()"><img src="/icons/trash.png"></button>
             <button class="increase" onclick="increaseTxtSize()"><img src="icons/increase font - icon.png"></button>
             <button class="decrease" onclick="decreaseTxtSize()"><img src="icons/decrease font - icon.png"></button>
@@ -60,8 +62,8 @@
                 <option value="verdana">Verdana</option>
                 <option value="marker">Marker</option>
             </select>
-           <button class="color-btn stroke-color"><input class="color" type="color" oninput="setStrokeColor()"><img src="icons/text stroke.png"></button>
-            <button class="color-btn fill-color"><input class="color" type="color" oninput="setFillColor()"><img src="icons/paint-board-and-brush.png"></button>
+           <button class="color-btn stroke-color"><input class="color color-stroke" type="color" oninput="setStrokeColor()"><img src="icons/text stroke.png"></button>
+            <button class="color-btn fill-color"><input class="color  color-fill" type="color" oninput="setFillColor()"><img src="icons/paint-board-and-brush.png"></button>
                 <button class="share"><img src="icons/share.png"></button>
                 <button class="download"><a href="#" class="btn" onclick="downloadMeme(this)" download="my-meme.jpg"><img src="icons/download.png"></a></button>
         </div>

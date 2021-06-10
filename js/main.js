@@ -8,11 +8,8 @@ var gCurrLine = 0;
 
 
 function init() {
-    // renderGrid();
     gElCanvas = document.getElementById('my-canvas');
     gCtx = gElCanvas.getContext('2d');
-    linesPosition(gElCanvas);
-    // linesPosition(gElCanvas);
     gTxtLocation = {
         x: gElCanvas.width / 2,
         y: gElCanvas.height - gElCanvas.height + 30
@@ -20,24 +17,28 @@ function init() {
     window.addEventListener('resize', () => {
         resizeCanvas()
     });
-    resizeCanvas()
 }
 
-// function renderGrid() {
-//     var elGrid = document.querySelector('.img-container');
-//     elGrid.innerHTML = gImgs.forEach((img) => {
-//         img = `<img src=${img.url} id="${img.id}" onclick="renderImage(this.id)">`
-//     })
-//     console.log(elGrid);
-// }
+function renderCanvas(id) {
+    renderImage(id);
+    posFirstLine(gElCanvas);
+}
 
 function resizeCanvas() {
+    moveLines(gElCanvas);
+    drawCanvas();
+}
+
+function drawCanvas() {
     var elContainer = document.querySelector('.main-container')
     gElCanvas.width = elContainer.offsetWidth / 2;
     gElCanvas.height = gElCanvas.width;
+    
     if (!gImg) return;
-    console.log(gMeme.lines[0].pos);
-    renderImage(gImg.id);
+    var img = new Image()
+    img.src = gImg.url
+    gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height);
+    drawText();
 }
 
 function renderImage(id) {
@@ -45,10 +46,7 @@ function renderImage(id) {
     document.querySelector('.main-container').classList.add('show');
     updateGmeme(id);
     gImg = getImage(id);
-    var img = new Image()
-    img.src = gImg.url
-    gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height);
-    drawText();
+    drawCanvas();
 }
 
 function renderText(txt) {
@@ -175,4 +173,14 @@ function setFont(font) {
     if (gMeme.lines.length === 0) return;
     changeLineFont(font, gCurrLine);
     renderImage(gImg.id);
+}
+
+function openNavMenu() {
+    document.querySelector('.nav-bar').classList.add('show-nav')
+    document.querySelector('.all-screen').classList.add('show-it')
+}
+
+function closeNavMenu() {
+    document.querySelector('.nav-bar').classList.remove('show-nav')
+    document.querySelector('.all-screen').classList.remove('show-it')
 }
