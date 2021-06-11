@@ -1,5 +1,7 @@
 'use strict'
 
+const KEY = 'memes';
+var savedMemes = [];
 var gImgs = [
     { id: 1, url: 'img/1.jpg', keywords: [] },
     { id: 2, url: 'img/2.jpg', keywords: [] },
@@ -120,19 +122,19 @@ function changeFill(line) {
 }
 
 function txtYUp(line) {
-    gMeme.lines[line].pos.y--;
+    gMeme.lines[line].pos.y = gMeme.lines[line].pos.y - 5;
 }
 
 function txtYDown(line) {
-    gMeme.lines[line].pos.y++;
+    gMeme.lines[line].pos.y = gMeme.lines[line].pos.y + 5;
 }
 
 function txtSizeUp(line) {
-    gMeme.lines[line].size++
+    gMeme.lines[line].size = gMeme.lines[line].size + 3;
 }
 
 function txtSizeDown(line) {
-    gMeme.lines[line].size--
+    gMeme.lines[line].size = gMeme.lines[line].size - 3;
 }
 
 function updateGmeme(id) {
@@ -152,4 +154,25 @@ function getImage(strId) {
 
 function getMemeText(line) {
     return gMeme.lines[line].txt;
+}
+
+function saveMemeInStorage(img) {
+    savedMemes.push(img)
+    console.log(savedMemes);
+    saveToStorage(KEY, savedMemes);
+}
+
+function loadMemes() {
+    savedMemes = loadFromStorage(KEY);
+}
+
+function loadFromStorage(key) {
+    var json = localStorage.getItem(key)
+    var data = JSON.parse(json)
+    return data;
+}
+
+function saveToStorage(key, data) {
+    var json = JSON.stringify(data);
+    localStorage.setItem(key, json)
 }
