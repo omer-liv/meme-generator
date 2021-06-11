@@ -112,7 +112,8 @@ function decreaseTxtSize() {
 function moveLineUp() {
     if (gMeme.lines.length === 0) return;
     txtYUp(gCurrLine);
-    renderImage(gImg.id);
+    drawCanvas();
+    showCurrLine();
 
 }
 
