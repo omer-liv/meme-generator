@@ -3,24 +3,30 @@
 const KEY = 'memes';
 var savedMemes = [];
 var gImgs = [
-    { id: 1, url: 'img/1.jpg', keywords: [] },
-    { id: 2, url: 'img/2.jpg', keywords: [] },
-    { id: 3, url: 'img/3.jpg', keywords: [] },
-    { id: 4, url: 'img/4.jpg', keywords: [] },
-    { id: 5, url: 'img/5.jpg', keywords: [] },
-    { id: 6, url: 'img/6.jpg', keywords: [] },
-    { id: 7, url: 'img/7.jpg', keywords: [] },
-    { id: 8, url: 'img/8.jpg', keywords: [] },
-    { id: 9, url: 'img/9.jpg', keywords: [] },
-    { id: 10, url: 'img/10.jpg', keywords: [] },
-    { id: 11, url: 'img/11.jpg', keywords: [] },
-    { id: 12, url: 'img/12.jpg', keywords: [] },
-    { id: 13, url: 'img/13.jpg', keywords: [] },
-    { id: 14, url: 'img/14.jpg', keywords: [] },
-    { id: 15, url: 'img/15.jpg', keywords: [] },
-    { id: 16, url: 'img/16.jpg', keywords: [] },
-    { id: 17, url: 'img/17.jpg', keywords: [] },
-    { id: 18, url: 'img/18.jpg', keywords: [] }
+    { id: 1, url: 'img/1.jpg', keywords: ['trump', 'fuuny', 'president', 'politics'] },
+    { id: 2, url: 'img/2.jpg', keywords: ['dogs', 'animals', 'cute'] },
+    { id: 3, url: 'img/3.jpg', keywords: ['dogs', 'animals', 'baby', 'cute', 'friends', 'sleep'] },
+    { id: 4, url: 'img/4.jpg', keywords: ['cats', 'animals', 'cute', 'sleep'] },
+    { id: 5, url: 'img/5.jpg', keywords: ['baby', 'yes', 'kids'] },
+    { id: 6, url: 'img/6.jpg', keywords: ['crazy', 'science'] },
+    { id: 7, url: 'img/7.jpg', keywords: ['kids', 'baby'] },
+    { id: 8, url: 'img/8.jpg', keywords: ['willy', 'wonka', 'charlie'] },
+    { id: 9, url: 'img/9.jpg', keywords: ['baby', 'laugh', 'kids'] },
+    { id: 10, url: 'img/10.jpg', keywords: ['laugh', 'obama', 'president'] },
+    { id: 11, url: 'img/11.jpg', keywords: ['sport', 'love', 'kiss', 'friends'] },
+    { id: 12, url: 'img/12.jpg', keywords: ['haim', 'do', 'what'] },
+    { id: 13, url: 'img/13.jpg', keywords: ['leo', 'leonardo', 'cheers', 'thanks'] },
+    { id: 14, url: 'img/14.jpg', keywords: ['what if i told you', 'serious', 'morpheus'] },
+    { id: 15, url: 'img/15.jpg', keywords: ['simply', 'one', 'lord', 'rings', 'serious'] },
+    { id: 16, url: 'img/16.jpg', keywords: ['laugh', 'funny', 'star'] },
+    { id: 17, url: 'img/17.jpg', keywords: ['putin', 'president', 'serious'] },
+    { id: 18, url: 'img/18.jpg', keywords: ['buzz', 'woody', 'toy', 'kids', 'everywhere'] },
+    { id: 19, url: 'img/19.jpg', keywords: ['angry'] },
+    { id: 20, url: 'img/20.jpg', keywords: ['funny', 'nerd', 'unlucky'] },
+    { id: 21, url: 'img/21.jpg', keywords: ['oprah', 'everyone', 'get'] },
+    { id: 22, url: 'img/22.jpg', keywords: ['dr', 'evil', 'funny'] },
+    { id: 23, url: 'img/23.jpg', keywords: ['dog', 'animals', 'sleep'] }
+    
 
 ];
 var gMeme = {
@@ -39,6 +45,14 @@ var gMeme = {
             }
         }
     ]
+}
+
+function filterImgs(filter) {
+    return gImgs.filter((img) => {
+        return img.keywords.some((word) => {
+           return word.includes(filter)
+        })
+    })
 }
 
 function posFirstLine(canvas) {
@@ -103,9 +117,9 @@ function changeLineFont(font, line) {
 }
 
 function moveTextX(id, line, canvas) {
-    if (id === '1') gMeme.lines[line].pos.x = canvas.width / 5;
-    if (id === '2') gMeme.lines[line].pos.x = canvas.width / 2;
-    if (id === '3') gMeme.lines[line].pos.x = canvas.width - canvas.width / 5;
+    if (id === 'left') gMeme.lines[line].pos.x = canvas.width / 5;
+    if (id === 'center') gMeme.lines[line].pos.x = canvas.width / 2;
+    if (id === 'right') gMeme.lines[line].pos.x = canvas.width - canvas.width / 5;
 }
 
 function removeLine(line) {
@@ -158,12 +172,12 @@ function getMemeText(line) {
 
 function saveMemeInStorage(img) {
     savedMemes.push(img)
-    console.log(savedMemes);
     saveToStorage(KEY, savedMemes);
 }
 
 function loadMemes() {
-    savedMemes = loadFromStorage(KEY);
+   var memes = loadFromStorage(KEY);
+    if (memes) savedMemes = memes;
 }
 
 function loadFromStorage(key) {
@@ -175,4 +189,9 @@ function loadFromStorage(key) {
 function saveToStorage(key, data) {
     var json = JSON.stringify(data);
     localStorage.setItem(key, json)
+}
+
+function addImage(url) {
+    var newImg = { id: gImgs.length + 1, url: url, keywords: [] };
+    gImgs.push(newImg);
 }

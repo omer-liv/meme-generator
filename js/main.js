@@ -7,6 +7,29 @@ var gImg;
 var gCurrLine = 0;
 
 
+function onImgInput(ev) {
+    loadImageFromInput(ev, renderImgFromUpload)
+}
+
+function loadImageFromInput(ev, onImageReady) {
+    var reader = new FileReader()
+
+    reader.onload = function (event) {
+        var img = new Image()
+        img.onload = onImageReady.bind(null, img)
+        img.src = event.target.result
+        gImg = img
+    }
+    reader.readAsDataURL(ev.target.files[0])
+}
+
+function renderImgFromUpload(img) {
+    addImage(img.src); 
+    gImg = gImgs[gImgs.length - 1];
+    renderCanvas(gImg.id)
+    
+}
+
 function init() {
     loadMemes();
     renderGrid(gImgs);
@@ -21,9 +44,27 @@ function init() {
     });
 }
 
+function filterGrid() {
+    document.querySelector('.img-container').style.display = ('grid');
+    document.querySelector('.main-container').style.display = ('none');
+    document.querySelector('.memes-container').style.display = ('none');
+    var filter = document.querySelector('.filter-box').value.toLowerCase();
+    var filteredImgs = filterImgs(filter);
+    var strHtml = filteredImgs.map((img) => {
+        return `<img class="grid-img" src=${img.url} id="${img.id}" onclick="renderCanvas(this.id)"></img>`
+    }).join('');
+   var grid = document.querySelector('.img-container');
+   grid.innerHTML = strHtml;
+   if (!grid.innerHTML.includes('img')) {
+       grid.innerHTML = `<h1>Sorry, i couldn't find images matching your search.</h1>`
+   }
+
+
+}
+
 function renderGrid(imgs) {
     var strHtml = imgs.map((img) => {
-        return `<img src=${img.url} id="${img.id}" onclick="renderCanvas(this.id)"></img>`
+        return `<img class="grid-img" src=${img.url} id="${img.id}" onclick="renderCanvas(this.id)"></img>`
     }).join('');
     document.querySelector('.img-container').innerHTML = strHtml;
 }
@@ -60,6 +101,7 @@ function drawCanvas() {
     if (!gImg) return;
     var img = new Image()
     img.src = gImg.url
+    var elImg = document.getElementById(`${gImg.id}`);
     gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height);
     drawText();
 }
@@ -225,6 +267,7 @@ function closeNavMenu() {
 }
 
 function saveMeme() {
+    drawCanvas();
     var imgContent = gElCanvas.toDataURL('image/jpg')
     saveMemeInStorage(imgContent);
     document.querySelector('.img-container').classList.remove('hide');
@@ -233,10 +276,10 @@ function saveMeme() {
 
 function showCurrLine() {
     var lineWidth = gCtx.measureText(gMeme.lines[gCurrLine].txt).width;
-   if (lineWidth === 0) lineWidth = 40;
+    if (lineWidth === 0) lineWidth = 40;
     var x = gMeme.lines[gCurrLine].pos.x;
     var y = gMeme.lines[gCurrLine].pos.y;
-    gCtx.lineWidth = 2;
+    gCtx.lineWidth = 0.8;
     gCtx.beginPath();
     gCtx.rect(x - lineWidth / 2 - 5, y - gMeme.lines[gCurrLine].size + 5, lineWidth + 10, gMeme.lines[gCurrLine].size)
     gCtx.strokeStyle = 'black'

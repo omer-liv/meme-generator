@@ -20,6 +20,10 @@ body {
     background-size: cover;
 }
 
+h1 {
+    grid-column: span2;
+}
+
 .all-screen {
     background-color: black;
     opacity: 0;
@@ -76,10 +80,18 @@ body {
     margin-bottom: 1rem;
 }
 
-.search-menu * {
+.search * {
     background-color: rgba(148, 128, 221, 0.349);
     font-family: acme, sans-serif;
     border-radius: 5px;
+}
+.search-menu label {
+    cursor: pointer;
+    background-color: none;
+}
+.file-input {
+    opacity: 0;
+    width: 0;
 }
 
 .img-container {
@@ -91,7 +103,7 @@ body {
 }
 
 .memes-container {
-    display: grid;
+    display: none;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     grid-auto-rows: 200px;
     gap: 0.5rem;
@@ -109,6 +121,8 @@ body {
     height: 200px;
     border-radius: 8px;
     box-shadow: 0px 5px 8px 5px rgba(0, 0, 0, 0.7);
+    object-fit: cover;
+    max-width: 200px;
 }
 
 .img-container img:hover {
@@ -289,12 +303,17 @@ a {
         border: unset;
         border-top: 3px solid #000;
     }
-    .nav-bar>* {
+    .nav-bar >* {
         border-top: 3px solid #000;
-        padding-top: 5px;
+        padding-top: 8px;
+    }
+
+    .nav-bar > :hover {
+        color: rgba(48, 216, 124, 0.74);
     }
     .img-container {
         margin-bottom: 5.5rem;
+        grid-template-columns: repeat(2, 1fr);
     }
     .main-container {
         flex-direction: column;
@@ -322,5 +341,6 @@ a {
     }
     .memes-container {
         margin-bottom: 5.5rem;
+        grid-template-columns: repeat(2, 1fr);
     }
 }
