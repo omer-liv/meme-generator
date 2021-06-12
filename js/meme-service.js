@@ -24,8 +24,8 @@ var gImgs = [
     { id: 19, url: 'img/19.jpg', keywords: ['angry'] },
     { id: 20, url: 'img/20.jpg', keywords: ['funny', 'nerd', 'unlucky'] },
     { id: 21, url: 'img/21.jpg', keywords: ['oprah', 'everyone', 'get'] },
-    { id: 22, url: 'img/22.jpg', keywords: ['dr', 'evil', 'funny'] },
-    { id: 23, url: 'img/23.jpg', keywords: ['dog', 'animals', 'sleep'] }
+    { id: 22, url: 'img/22.jpg', keywords: ['dr', 'evil', 'funny', 'doctor'] },
+    { id: 23, url: 'img/23.jpg', keywords: ['dogs', 'animals', 'sleep'] }
     
 
 ];

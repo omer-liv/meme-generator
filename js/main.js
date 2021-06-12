@@ -45,9 +45,6 @@ function init() {
 }
 
 function filterGrid() {
-    document.querySelector('.img-container').style.display = ('grid');
-    document.querySelector('.main-container').style.display = ('none');
-    document.querySelector('.memes-container').style.display = ('none');
     var filter = document.querySelector('.filter-box').value.toLowerCase();
     var filteredImgs = filterImgs(filter);
     var strHtml = filteredImgs.map((img) => {
@@ -72,6 +69,7 @@ function renderGrid(imgs) {
 function openMemes() {
     document.querySelector('.img-container').style.display = ('none');
     document.querySelector('.main-container').style.display = ('none');
+    document.querySelector('.search').style.opacity = ('0');
     document.querySelector('.memes-container').classList.add('show-grid');
     var strHtml = savedMemes.map((meme) => {
 
@@ -82,6 +80,7 @@ function openMemes() {
 }
 
 function renderCanvas(id) {
+    document.querySelector('.search').style.opacity = ('0');
     renderImage(id);
     posFirstLine(gElCanvas);
     drawCanvas();
@@ -247,6 +246,7 @@ function downloadMeme(elLink) {
     elLink.href = imgContent;
     document.querySelector('.img-container').classList.remove('hide');
     document.querySelector('.main-container').classList.remove('show');
+    document.querySelector('.search').style.opacity = ('1');
 }
 
 function setFont(font) {
@@ -272,6 +272,7 @@ function saveMeme() {
     saveMemeInStorage(imgContent);
     document.querySelector('.img-container').classList.remove('hide');
     document.querySelector('.main-container').classList.remove('show');
+    document.querySelector('.search').style.opacity = ('1');
 }
 
 function showCurrLine() {
