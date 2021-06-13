@@ -50,7 +50,7 @@ var gMeme = {
 function filterImgs(filter) {
     return gImgs.filter((img) => {
         return img.keywords.some((word) => {
-           return word.includes(filter)
+           return word.includes(filter);
         })
     })
 }
